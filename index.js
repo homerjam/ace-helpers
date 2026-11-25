@@ -154,7 +154,10 @@ class Helpers {
     }
 
     if (/(video)/.test(thumbnail.type)) {
-      return `${this.config.assistUrl}/${this.config.slug}/transform/${settingsString}/${thumbnail.name}/thumb.jpg${query}`;
+      // `poster` is a frame picked in the CMS (fokus-assist file/thumbnail)
+      return `${this.config.assistUrl}/${this.config.slug}/transform/${settingsString}/${thumbnail.name}/${
+        thumbnail.poster ? thumbnail.poster.fileName : 'thumb.jpg'
+      }${query}`;
     }
 
     if (/(oembed|proxy)/.test(thumbnail.type)) {
